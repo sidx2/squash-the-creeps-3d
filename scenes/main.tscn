@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://djnlo7da675jt"]
 
-[ext_resource type="PackedScene" uid="uid://kvc8oybrmk2m" path="res://player.tscn" id="1_abycs"]
-[ext_resource type="Script" path="res://main.gd" id="1_icnk4"]
-[ext_resource type="PackedScene" uid="uid://d4j2xt4ay6l2s" path="res://mob.tscn" id="2_fekqm"]
-[ext_resource type="FontFile" uid="uid://c3v036pahctot" path="res://fonts/Montserrat-Medium.ttf" id="4_0vjt0"]
-[ext_resource type="Script" path="res://ScoreLabel.gd" id="5_c8uvg"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_a0bpc"]
+[ext_resource type="PackedScene" uid="uid://d4j2xt4ay6l2s" path="res://scenes/mob.tscn" id="2_12ucs"]
+[ext_resource type="PackedScene" uid="uid://kvc8oybrmk2m" path="res://scenes/player.tscn" id="3_doheh"]
+[ext_resource type="FontFile" uid="uid://c3v036pahctot" path="res://fonts/Montserrat-Medium.ttf" id="4_brava"]
+[ext_resource type="Script" path="res://scripts/ScoreLabel.gd" id="5_cpvhn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ldfyx"]
 size = Vector3(60, 2, 60)
@@ -26,12 +26,12 @@ _data = {
 point_count = 5
 
 [sub_resource type="Theme" id="Theme_rtk6h"]
-default_font = ExtResource("4_0vjt0")
+default_font = ExtResource("4_brava")
 default_font_size = 22
 
 [node name="Main" type="Node"]
-script = ExtResource("1_icnk4")
-mob_scene = ExtResource("2_fekqm")
+script = ExtResource("1_a0bpc")
+mob_scene = ExtResource("2_12ucs")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -50,7 +50,7 @@ mesh = SubResource("BoxMesh_uunlw")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.28343, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_abycs")]
+[node name="Player" parent="." instance=ExtResource("3_doheh")]
 
 [node name="CameraPivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
@@ -82,7 +82,7 @@ mesh = SubResource("CylinderMesh_5o4s4")
 curve = SubResource("Curve3D_gss8l")
 
 [node name="SpawnPathLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(0.0114279, 0, -0.999934, 0, 1, 0, 0.999934, 0, 0.0114279, -13.5459, 0, -17.6242)
+transform = Transform3D(0.0114275, 0, -0.999934, 0, 1, 0, 0.999934, 0, 0.0114275, -13.5459, 0, -17.6242)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -105,7 +105,7 @@ offset_right = 90.0
 offset_bottom = 47.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Score: 0"
-script = ExtResource("5_c8uvg")
+script = ExtResource("5_cpvhn")
 
 [node name="Retry" type="ColorRect" parent="UserInterface"]
 layout_mode = 1
